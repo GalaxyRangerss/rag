@@ -1,0 +1,29 @@
+def calculate_staking_rewards(total_staked, validator_stake, annual_apr, time_staked_years):
+    """
+    Calculate Ethereum staking rewards.
+    
+    Parameters:
+    total_staked (float): Total ETH staked in the network.
+    validator_stake (float): ETH staked by the validator.
+    annual_apr (float): The annual staking reward rate as a decimal (e.g., 0.05 for 5% APR).
+    time_staked_years (float): Time staked in years.
+    
+    Returns:
+    float: The staking rewards earned.
+    """
+    # Calculate the validator's share of total staked ETH
+    validator_share = validator_stake / total_staked
+    
+    # Calculate the staking rewards based on APR and validator's share
+    staking_rewards = annual_apr * validator_share * total_staked * time_staked_years
+    
+    return staking_rewards
+
+# Example Usage:
+total_staked = 12000000  # 12 million ETH staked in the network
+validator_stake = 32  # 32 ETH staked by the validator
+annual_apr = 0.05  # 5% APR
+time_staked_years = 1  # 1 year of staking
+
+rewards = calculate_staking_rewards(total_staked, validator_stake, annual_apr, time_staked_years)
+print(f"Staking rewards earned: {rewards:.2f} ETH")
